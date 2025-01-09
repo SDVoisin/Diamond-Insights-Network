@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Diamond Insights Baseball Scouting">
+    <title>About | Diamond Insights Baseball Scouting</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #171b36;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .main-content {
+            margin-left: 240px; /* Sidebar width */
+            padding: 20px;
+            width: calc(100% - 240px);
+            min-height: 100vh;
+            background-color: #f7f7f7;
+        }
+
+        /* Sidebar Navigation */
+        .menu-bar {
+            background-color: #171b36;
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-items li {
+            margin: 15px 0;
+        }
+
+        .menu-items a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 20px;
+            display: block;
+            border-bottom: 2px solid #444;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .menu-items a:hover {
+            background-color: #D50032;
+        }
+
+        .menu-items .active {
+            background-color: #D50032;
+            color: white;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #171b36;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header img {
+            width: 200px; /* Adjust the width as needed */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        /* About & Mission Section Styles */
+        .about, .mission {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .about p, .mission p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Team Section Styles */
+        .team {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #D50032;
+        }
+
+        .team-member .info {
+            color: #171b36;
+        }
+
+        .team-member .info h3 {
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .team-member .info p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .team-member .info .role {
+            font-size: 1.3rem;
+            color: #D50032;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #171b36;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-bar {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-left: 200px;
+                width: calc(100% - 200px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .menu-bar {
+                width: 180px;
+            }
+
+            .main-content {
+                margin-left: 180px;
+                width: calc(100% - 180px);
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .about p, .mission p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="menu-bar">
+        <ul class="menu-items">
+            <li><a href="DiamondInsights.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="content">
+            <header>
+                <a href="https://www.dropbox.com/scl/fi/29mp0t9dudkmfttp8wn2c/Diamond-Insights-Baseball-Scouting-logo-8.jpg?rlkey=dv8xncfk04bmyhx965vs6dzlj&st=bmwi75uy&dl=0" target="_blank">
+                    <img src="https://www.dropbox.com/scl/fi/29mp0t9dudkmfttp8wn2c/Diamond-Insights-Baseball-Scouting-logo-8.jpg?rlkey=dv8xncfk04bmyhx965vs6dzlj&st=bmwi75uy&dl=1" alt="Diamond Insights Logo" width="400" height="auto" />
+                </a>
+                <h1>Welcome to Diamond Insights</h1>
+            </header>
+
+            <!-- About Section -->
+            <section class="about">
+                <div class="section-title">About Us</div>
+                <p>At Diamond Insights Baseball Scouting, we provide professional and detailed scouting reports to the baseball community. All insights are generated internally through extensive research and qualitative and quantitative analysis. Diamond Insights aims to provide the entire baseball community with intelligent and unbiased content, free from any affiliations with programs or organizations. This site is committed to the overall positive growth of the game and the baseball community. The author has a deep passion for baseball and wants to ensure elite prospects around the globe are given a platform to be showcased.</p>
+                <p>The site's goal is to revolutionize the scouting process through advanced analytics and offering valuable insights that lead to more informed decisions when evaluating and recruiting players. Additionally, the site showcases the author's firsthand observations and personal scouting portfolio/projects.</p>
+            </section>
+
+            <!-- Mission Section -->
+            <section class="mission">
+                <div class="section-title">Our Mission</div>
+                <p>Our goal at Diamond Insights is simple: to give athletes, coaches, and teams the most thorough and accurate scouting reports possible so they may succeed by making wise decisions. As a dependable partner in each player's path from amateur to professional levels, we are committed to supporting baseball's growth, development, and excellence.
+
+                    We are dedicated to more than just scouting. By bridging the gap between local talent and national exposure, we hope to advance baseball in Canada. By highlighting athletes at all levels, we hope to raise awareness and interest in baseball and make sure it flourish in local communities all throughout the nation and internationally. Diamond Insights acts as a global hub for prospect discovery, assisting in the identification and promotion of top prospects both domestically and abroad. By bringing together scouts, coaches, and organizations, our platform gives teams access to the greatest players and gives athletes the chance to excel on their journey. Our goal is to create a thriving ecosystem that fosters baseball's global growth via player analysis and networking.
+
+                    Our goal is ambitious but essential: We strive to be stewards of the game here, arouse enthusiasm, and influence baseball's course for future generations.</p>
+            </section>
+
+            <!-- Team Section -->
+            <section class="team">
+                <div class="section-title">Our Team</div>
+
+                <!-- Team Member -->
+                <div class="team-member">
+                    <img src="https://athletics.uwaterloo.ca/images/2023/10/13/Voisin_S.jpg?width=300" alt="Spencer Voisin">
+                    <div class="info">
+                        <h3>Spencer Voisin</h3>
+                        <p class="role"> Founder / Research Director</p>
+                        <p>Spencer Voisin is the founder and research director at Diamond Insights. With a background as a player with the University of Waterloo and Semi-Professional level in the IBL for the Kitchener Panthers and Brantford Red Sox. He has since shifted his focus to growing the game through various local ventures within the baseball community via scouting, data analysis and player development. Spencer is dedicated to improving the scouting process and providing his own insights for athletes and coaches at all levels so that they can make more informed decisions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer>
+                <p>&copy; 2024 Diamond Insights Baseball Scouting. All Rights Reserved.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.V Amateur Baseball Watch-List</title> 
+    
+<style>
+/* General body and page styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2e2e2e; /* Dark grey background */
+    color: #f0f0f0; /* Light text for contrast */
+    margin: 0;
+    padding: 0;
+}
+
+/* Main container */
+main {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Heading styles */
+h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+/* Table header */
+th {
+    background-color: #444444; /* Slightly darker grey */
+    color: #ffffff;
+    padding: 12px;
+    text-align: left;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+/* Table data */
+td {
+    background-color: #333333; /* Slightly lighter grey for rows */
+    color: #e0e0e0;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #555;
+}
+
+/* Hover effect for table rows */
+tr:hover {
+    background-color: #444444;
+}
+
+/* Player name (linked to card toggle) */
+.player-name {
+    color: #ffcc00; /* Highlight color for player names */
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.player-name:hover {
+    text-decoration: underline;
+}
+
+/* Player card styles */
+.player-card {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #444444;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    padding: 20px;
+    margin-top: 10px;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+.player-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.player-card h2 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.player-card .player-description {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.player-card .metrics, .player-card .stats, .player-card .videos {
+    margin-top: 15px;
+}
+
+.player-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.player-card li {
+    font-size: 14px;
+}
+
+/* Video player styling */
+.player-card video {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Table row for players */
+tr td:nth-child(1), tr td:nth-child(2) {
+    width: 20%;
+}
+
+tr td:nth-child(3) {
+    width: 15%;
+}
+
+tr td:nth-child(4) {
+    width: 20%;
+}
+
+tr td:nth-child(5) {
+    width: 25%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    main {
+        width: 95%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .player-card {
+        width: 250px;
+    }
+}
+
+</style>
+
+<script>
+// Function to toggle the visibility of the player cards
+function toggleCard(cardId) {
+    // Get the card element
+    var card = document.getElementById(cardId);
+    
+    // Check the current display status
+    if (card.style.display === "block") {
+        // If it's visible, hide it
+        card.style.display = "none";
+    } else {
+        // If it's hidden, show it
+        card.style.display = "block";
+    }
+}
+</script>
+
+<script>
+
+
+</script>
+
+</head>
+<main>
+        <section id="2025">
+            <h2>Top 5 2025 Hitters to Watch</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Exit Velocity</th>
+                        <th>Team</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Player 1 -->
+                    <tr>
+                        <td>#1</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('player1-card')">Timothy Piasentin</span>
+                            <div id="player1-card" class="player-card">
+                                <img src="headshot_timothy.jpg" alt="Timothy Piasentin Headshot">
+                                <h2>Timothy Piasentin</h2>
+                                <p class="player-description">Power-hitting third baseman with excellent metrics.</p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li>Exit Velocity: 104.9 mph</li>
+                                        <li>Throwing Velocity: 93.1 mph</li>
+                                        <li>Bat Speed: 74.0 mph</li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>Batting Average: NA</li>
+                                        <li>Home Runs: NA</li>
+                                        <li>RBIs: NA</li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="timothy_highlight1.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>3B</td>
+                        <td>104.9 MPH</td>
+                        <td>Okotoks Dawgs Academy</td>
+                    </tr>
+                    
+                     <tr>
+                        <td>#2</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('player2-card')">Jordan Jacob</span>
+                            <div id="player2-card" class="player-card">
+                                <img src="headshot_Jordan.jpg" alt="Jordan Jacob Headshot">
+                                <h2>Jordan Jacob</h2>
+                                <p class="player-description">Power-hitting third baseman with excellent metrics.</p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li> Peak Exit Velocity: 100 mph</li>
+                                        <li>Throwing Velocity: 82 MPH mph</li>
+                                        <li>Bat Speed: 73.9 mph</li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>Batting Average: NA </li>
+                                        <li>Home Runs: NA</li>
+                                        <li>RBIs: NA</li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="jordan_jacob1.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>3B</td>
+                        <td>100 MPH</td>
+                        <td>Ontario Blue Jays</td>
+                    </tr>
+                    
+                     <tr>
+                        <td>#3</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('player3-card')">Philip Cheong</span>
+                            <div id="player3-card" class="player-card">
+                                <img src="headshot_philip.jpg" alt=" Philip Cheong Headshot">
+                                <h2>Philip Cheong</h2>
+                                <p class="player-description"> 80 Speed, 69 OF Velo, 60 Power, More of a contact hitter.</p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li>Exit Velocity: 99.1 mph</li>
+                                        <li>Throwing Velocity: 91 mph</li>
+                                        <li>Bat Speed: 76.8 mph</li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>Batting Average: NA</li>
+                                        <li>Home Runs: NA</li>
+                                        <li>RBIs: NA</li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="timothy_highlight1.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>OF</td>
+                        <td>99.1 MPH</td>
+                        <td>Ontario Blue Jays</td>
+                    </tr>
+                    
+                     <tr>
+                        <td>#4</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('player4-card')"> Ryan Stalony</span>
+                            <div id="player4-card" class="player-card">
+                                <img src="headshot_ryan.jpg" alt="Ryan Stalony Headshot">
+                                <h2>Ryan Stalony</h2>
+                                <p class="player-description">Power-hitting Corner OF, 75 Speed, 62 Power, 68 Arm. He plays the game with some fire-had brief antics in the Canadian Futures showcase spiking a bat after a HR. </p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li>Exit Velocity: 101.2 mph</li>
+                                        <li>Throwing Velocity: 90 mph</li>
+                                        <li>Bat Speed: 77.5 mph</li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>Batting Average: NA</li>
+                                        <li>Home Runs: NA</li>
+                                        <li>RBIs: NA</li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="Ryan_highlight1.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>OF</td>
+                        <td>101.2 MPH</td>
+                        <td>Ontario Blue Jays</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>#5</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('player5-card')">Esteban Dessureault</span>
+                            <div id="player2-card" class="player-card">
+                                <img src="headshot_esteban.jpg" alt=" Esteban Dessureault Headshot">
+                                <h2>Esteban Dessureault</h2>
+                                <p class="player-description"> Physical Corner INF, Strong-Smooth LH Bat More Investigation needed.</p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li>Exit Velocity: 96 mph*</li>
+                                        <li>Throwing Velocity: 80 mph*</li>
+                                        <li>Bat Speed: 71* mph</li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>Batting Average: NA</li>
+                                        <li>Home Runs: NA</li>
+                                        <li>RBIs: NA </li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="estaban_highlight1.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>3B/1B</td>
+                        <td>96 MPH*</td>
+                        <td>ABC Academy </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+            <h2>Top 5 2025 Pitchers to Watch</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Throwing Hand</th>
+                        <th>Fastball</th>
+                        <th>Team</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Pitcher 1 -->
+                    <tr>
+                        <td>#1</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('pitcher1-card')">Keegan Russell</span>
+                            <div id="pitcher1-card" class="player-card">
+                                <img src="headshot_keegan.jpg" alt="Keegan Russell Headshot">
+                                <h2>Keegan Russell</h2>
+                                <p class="player-description">Tall right-hander with a powerful fastball and great spin rates.</p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li>Fastball: 93 mph</li>
+                                        <li>Spin Rate: 2453 RPM</li>
+                                        <li>Change-Up: 82 mph</li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>ERA: NA</li>
+                                        <li>Strikeouts: NA</li>
+                                        <li>WHIP: NA</li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="keegan_pitching.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>RHP</td>
+                        <td>93 MPH</td>
+                        <td>Toronto Mets</td>
+                    </tr>
+                   
+                   <tr>
+                        <td>#2</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('pitcher2-card')">Jackson Kornylo</span>
+                            <div id="pitcher2-card" class="player-card">
+                                <img src="headshot_jackson.jpg" alt="Jackson Kornylo Headshot">
+                                <h2>Jackson Kornylo</h2>
+                                <p class="player-description">Tall right-hander, fastball has life, FB arm side run and great spin rates, 69 Grade, arm issues in the past seem's to have come back stronger.</p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li>Fastball: 95 mph</li>
+                                        <li>Spin Rate: 2453 RPM</li>
+                                        <li>Change-Up: 82 mph</li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>ERA: NA</li>
+                                        <li>Strikeouts: NA</li>
+                                        <li>WHIP: NA</li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="jackson_pitching.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>RHP</td>
+                        <td>95 MPH</td>
+                        <td>TNXL Academy/ Canes National</td>
+                    </tr>
+                   
+                   <tr>
+                        <td>#3</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('pitcher3-card')"> Will Hynes</span>
+                            <div id="pitcher3-card" class="player-card">
+                                <img src="headshot_will.jpg" alt="Will Hynes Headshot">
+                                <h2>Will Hynes</h2>
+                                <p class="player-description"> Skinny right-hander, Low Effort 90's FB that sets up a tight spinning CB. Commands the zone well, with  solid spin rates on his mix.</p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li>Fastball: 92 mph</li>
+                                        <li>Spin Rate: 2199 RPM</li>
+                                        <li>Change-Up: 80-83 mph</li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>ERA: NA</li>
+                                        <li>Strikeouts: NA</li>
+                                        <li>WHIP: NA</li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="will_pitching.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>RHP</td>
+                        <td>92 MPH</td>
+                        <td>Ontario Blue Jays/ Canes National</td>
+                    </tr>
+                   
+                   <tr>
+                        <td>#4</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('pitcher4-card')">Shane Brinham</span>
+                            <div id="pitcher1-card" class="player-card">
+                                <img src="headshot_shane.jpg" alt="Shane Brinham Headshot">
+                                <h2>Shane Bringham</h2>
+                                <p class="player-description">AVG Size LH Arm with a powerful fastball and high-spin + sweeping slider. More investigation is needed to fully understand his impact at the next level. Has Dominated JNT, as well as the West Coast League in 2024. I expect a big 2025 from him. </p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li>Fastball: 92 mph</li>
+                                        <li>Spin Rate: 2729 RPM</li>
+                                        <li>Change-Up: 80-81.4 mph</li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>ERA: NA</li>
+                                        <li>Strikeouts: NA</li>
+                                        <li>WHIP: NA </li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="shane_pitching.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>LHP</td>
+                        <td>9w MPH</td>
+                        <td>North Shore Twins</td>
+                    </tr>
+                   
+                   <tr>
+                        <td>#5</td>
+                        <td>
+                            <span class="player-name" onclick="toggleCard('pitcher5-card')">Ben Goodacre</span>
+                            <div id="pitcher5-card" class="player-card">
+                                <img src="headshot_ben.jpg" alt="Ben Goodacre Headshot">
+                                <h2>Keegan Russell</h2>
+                                <p class="player-description">Tall right-hander with a high effort Low -> Mid 90's has been up to 95. FB that spins high and TRUE, hides the ball well. 12-6 slow curve 16.2 MPH less on avg than the FB * Updated Off-Speed Metrics needed.</p>
+                                <div class="metrics">
+                                    <h3>Metrics</h3>
+                                    <ul>
+                                        <li>Fastball: 95 mph</li>
+                                        <li>Spin Rate: 2488 RPM</li>
+                                        <li>Change-Up: 71.2 mph * </li>
+                                    </ul>
+                                </div>
+                                <div class="stats">
+                                    <h3>Stats</h3>
+                                    <ul>
+                                        <li>ERA: NA</li>
+                                        <li>Strikeouts: NA</li>
+                                        <li>WHIP: NA</li>
+                                    </ul>
+                                </div>
+                                <div class="videos">
+                                    <h3>Videos</h3>
+                                    <video controls>
+                                        <source src="" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                        <td>RHP</td>
+                        <td>95 MPH</td>
+                        <td>Fieldhouse Pirates</td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>
+
+<body>

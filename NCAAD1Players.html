@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCAA D1 Draft Prospects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #171b36;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1f233d;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            text-align: center;
+            background-color: rgb(153, 11, 11);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .player {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .player-card {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .player-card h3 {
+            margin-top: 0;
+        }
+
+        .video {
+            margin-top: 15px;
+        }
+
+        .toggle-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .toggle-section button {
+            background-color: rgb(153, 11, 11);
+            color: white;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .toggle-section button:hover {
+            background-color: #1f233d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+            <img src="https://www.dropbox.com/scl/fi/29mp0t9dudkmfttp8wn2c/Diamond-Insights-Baseball-Scouting-logo-8.jpg?rlkey=dv8xncfk04bmyhx965vs6dzlj&st=bmwi75uy&dl=1" alt="Diamond Insights Logo" width="200" height="auto" />
+        </a>
+        <h1>NCAA D1 Sleeper Prospects</h1>
+        <nav>
+            <a href="#">Edition 1</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="toggle-section">
+            <button onclick="showEdition(1)"> Version #1: January 1st 2025</button>
+        </div>
+
+        <div id="edition-1" class="edition">
+            <div class="section">
+                <h2>Pitchers</h2>
+                <div class="player" onclick="togglePlayerCard('pitcher-1')"> Blake Gillespie: 6'2" 205LBS: RHP: University of North Carolina Charlotte </div>
+                <div id="pitcher-1" class="player-card">
+                    <h3> Blake Gillespie - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> Elite fastball with excellent command. Projects as a mid-rotation starter.</p>
+                    <p><strong>Tool Grading:</strong> Fastball: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="player" onclick="togglePlayerCard('pitcher-1')">  Itsuki Takemoto: 6'3" 200LBS: RHP: University of Hawai'i </div>
+                <div id="pitcher-1" class="player-card">
+                    <h3> Itsuki Takemoto - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> </p>
+                    <p><strong>Tool Grading:</strong> Fastball: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="player" onclick="togglePlayerCard('pitcher-1')">   Tanner Franklin : 6'5" 240LBS: RHP: University of Tennessee </div>
+                <div id="pitcher-1" class="player-card">
+                    <h3> Itsuki Takemoto - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> </p>
+                    <p><strong>Tool Grading:</strong> Fastball: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="player" onclick="togglePlayerCard('pitcher-1')">   Aaron Savary : 6'3" 195LBS: RHP: University of Iowa </div>
+                <div id="pitcher-1" class="player-card">
+                    <h3> Aaron Savary - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> </p>
+                    <p><strong>Tool Grading:</strong> Fastball: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="player" onclick="togglePlayerCard('pitcher-1')">   Miles Gosztola : 6'3" 200LBS: LHP: Gonzaga University </div>
+                <div id="pitcher-1" class="player-card">
+                    <h3> Miles Gosztola - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> </p>
+                    <p><strong>Tool Grading:</strong> Fastball: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+        
+            </div>
+
+            <div class="section">
+                <h2>Hitters</h2>
+                <div class="player" onclick="togglePlayerCard('hitter-1')">Peyton Watts : 6'1" 175LBS: INF: Troy University</div>
+                <div id="hitter-1" class="player-card">
+                    <h3> Peyton Watts - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> </p>
+                    <p><strong>Tool Grading:</strong> Hit: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="player" onclick="togglePlayerCard('hitter-2')"> Brooks Ryan: 6'2" 222LBS: C: Troy University</div>
+                <div id="hitter-1" class="player-card">
+                    <h3> Brooks Ryan - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> </p>
+                    <p><strong>Tool Grading:</strong> Hit: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="player" onclick="togglePlayerCard('hitter-3')"> Justin Best: 6'4" 199LBS: OF : University of New Orleans </div>
+                <div id="hitter-1" class="player-card">
+                    <h3> Justin Best - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> </p>
+                    <p><strong>Tool Grading:</strong> Hit: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="player" onclick="togglePlayerCard('hitter-4')"> Aviva Arquette: 6'5" 220LBS: OF : University of Oregon </div>
+                <div id="hitter-1" class="player-card">
+                    <h3> Aviva Arquette - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> </p>
+                    <p><strong>Tool Grading:</strong> Hit: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="player" onclick="togglePlayerCard('hitter-4')"> Tanner Thach: 6'4" 220LBS: OF : University of Oregon </div>
+                <div id="hitter-1" class="player-card">
+                    <h3> Tanner Thach - Scouting Report</h3>
+                    <p><strong>Analysis:</strong> </p>
+                    <p><strong>Tool Grading:</strong> Hit: </p>
+                    <div class="video">
+                        <p>Video:</p>
+                        <video controls>
+                            <source src="player-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+
+    </div>
+
+    <script>
+        function togglePlayerCard(id) {
+            const card = document.getElementById(id);
+            card.style.display = card.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function showEdition(edition) {
+            document.querySelectorAll('.edition').forEach(e => e.style.display = 'none');
+            document.getElementById(`edition-${edition}`).style.display = 'block';
+        }
+
+        // Initially show Edition 1
+        showEdition(1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Insights</title> 
+    <link rel="stylesheet" href="Canadian Baseball Hub.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #171b36;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #ff0000;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .menu-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-items li {
+            margin: 15px 0;
+        }
+
+        .menu-items a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        .menu-items a:hover {
+            color: #ffd700;
+        }
+
+        header {
+            background-color: #171b36;
+            color:  rgb(153, 11, 11);
+            padding: 30px 20px;
+            text-align: center;
+            
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .section-title {
+            font-size: 3.5em;
+            margin-bottom: 50px;
+            color: rgb(153, 11, 11);
+        }
+
+        .latest-news, .player-highlights, .trending-players {
+            margin-bottom: 100px;
+        }
+
+        .news-grid, .video-grid, .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .news-item, .video-item, .stock-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-item img, .video-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: white;
+            color: #171b36;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+     <style>
+        /* Navigation bar container */
+        .menu-bar {
+            background-color: #171b36;
+            width: 240px;
+            height: 100vh; /* Full height of the screen */
+            position: fixed; /* Sticks to the left side of the screen */
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Adds scrolling if content overflows */
+            padding: 10px 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Styling the scrollbar */
+        .menu-bar::-webkit-scrollbar {
+            width: 8px; /* Width of the scrollbar */
+        }
+
+        .menu-bar::-webkit-scrollbar-thumb {
+            background-color: #D50032; /* Color of the scrollbar thumb */
+            border-radius: 10px;
+        }
+
+        /* Unordered list (menu items) */
+        .menu-items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* List items */
+        .menu-items li {
+            display: block;
+        }
+
+        /* Links */
+        .menu-items a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 20px;
+            display: block;
+            border-bottom: 2px solid #444; /* Dividing line between items */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Hover effect */
+        .menu-items a:hover {
+            background-color: #D50032 ;
+        }
+
+        /* Active link */
+        .menu-items .active {
+            background-color: #171b36 ;
+            color: white;
+        }
+
+        /* For smaller screens */
+        @media (max-width: 600px) {
+            .menu-bar {
+                width: 180px;
+            }
+
+            .menu-items a {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="menu-bar">
+    <ul class="menu-items">
+         <li><a href="AmateurBaseballHub2.html" class="active">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="#news">Latest News</a></li>
+        <li><a href="#highlights">Player Highlights</a></li>
+        <li><a href="#trending">Trending Players</a></li>
+       <li><a href="CanadianHighSchoolPlayers.html">Canadian High School Players</a></li>
+        <li><a href="CanadianCollegePlayers.html">Canadian College Players</a></li>
+        <li><a href="AmericanHighSchoolPlayers.html">American High School Players</a></li>
+        <li><a href="NCAAD1Players.html">NCAA D1 Players</a></li>
+        <li><a href="NJCAAPlayers.html">NJCAA Players</a></li>
+        <li><a href="InternationalProspects.html">International Prospects</a></li>
+        <li><a href="IndependentProspects.html">Independent League Prospects</a></li>
+    </ul>
+</nav>
+
+<div style="margin-left: 300px; padding: 20px;">
+
+
+    <div class="content">
+        <header>
+    <a href="https://www.dropbox.com/scl/fi/29mp0t9dudkmfttp8wn2c/Diamond-Insights-Baseball-Scouting-logo-8.jpg?rlkey=dv8xncfk04bmyhx965vs6dzlj&st=bmwi75uy&dl=0" target="_blank">
+    <img src="https://www.dropbox.com/scl/fi/29mp0t9dudkmfttp8wn2c/Diamond-Insights-Baseball-Scouting-logo-8.jpg?rlkey=dv8xncfk04bmyhx965vs6dzlj&st=bmwi75uy&dl=1" alt="Diamond Insights Logo" width="400" height="auto" />
+</a>
+
+
+
+    <h1>Welcome to Diamond Insights</h1>
+</header>
+
+
+        <section id="news" class="latest-news">
+    <h2 class="section-title">Latest News</h2>
+    <div class="news-grid">
+        <div class="news-item">
+            <a href="Premier12.html">
+                <img src="https://www.konami.com/games/s/corporate/img/release/20240409/logo.png" alt="konami.com" style="width: 255px; height: 400px;">
+            </a>
+            <h3>
+                <a href="Premier12.html">Top Prospects from the Premier 12 2024</a>
+            </h3>
+            <p>Details about this year's top standout performances throughout the tournament, with some familiar affiliate names as well as some rising prospects.</p>
+        </div>
+        
+        <div class="news-item">
+            <img src="https://digitalshift-assets.sfo2.cdn.digitaloceanspaces.com/pw/7cbc73cf-69ff-40f9-93b5-d48bb7a9cc79/p-3907fad6-712b-4445-b6e2-c1a0313ede4c/1709760198-full.png" alt="cpblbaseball.com">
+            <h3>Scout’s Corner: Rising Stars to Watch</h3>
+            <p>Analysis of players who are making waves in the CPBL.</p>
+        </div>
+        <div class="news-item">
+            <img src="https://img.mlbstatic.com/mlb-images/image/upload/t_16x9/t_w1024/mlb/p5rwn2a0kine1a1nehlu.jpg" alt="mlb.com">
+            <h3>Breaking: Draft Updates</h3>
+            <p>Insights into the highest potential draft picks and their slot value.</p>
+        </div>
+        
+        <div class="news-item">
+            <img src="https://static.wbsc.org/assets/cms/ea04e416-e9a7-38cf-312a-4f48e476e143.png" alt="wbsc.org">
+            <h3> Australian Baseball League Updates</h3>
+            <p>Insights into the highest potential players currently playing in Australia</p>
+        </div>
+    </div>
+</section>
+<style>
+/* Section Styling */
+.latest-news {
+    padding: 40px 20px;  /* Adjust padding for more space */
+    background-color: #f9f9f9;
+    text-align: center;
+    overflow: hidden;  /* Ensures the section doesn't overflow horizontally */
+}
+
+/* Grid Layout - Horizontal Scrolling */
+.news-grid {
+    display: flex;  /* Use flexbox for horizontal scrolling */
+    gap: 20px;  /* Reduced gap for tighter layout */
+    overflow-x: auto;  /* Allows horizontal scrolling */
+    scroll-behavior: smooth;  /* Smooth scroll */
+    padding-bottom: 10px;  /* Add padding to ensure scroll works smoothly */
+    justify-content: flex-start;  /* Align items to the left */
+}
+
+.news-grid::-webkit-scrollbar {
+    height: 8px;  /* Custom scrollbar height */
+}
+
+.news-grid::-webkit-scrollbar-thumb {
+    background-color: black;  /* Scrollbar color */
+    border-radius: 4px;  /* Rounded corners for the scrollbar thumb */
+}
+
+.news-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;  /* Scrollbar track color */
+}
+
+/* News Item Styling */
+.news-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;  /* Softer edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Stronger shadow for a more prominent effect */
+    overflow: hidden;  /* Ensures rounded corners work for child elements */
+    padding: 20px;
+    text-align: center;
+    min-width: 280px;  /* Minimum width to ensure consistent item size */
+    transition: all 0.3s ease;  /* Smooth hover effect */
+}
+
+.news-item:hover {
+    transform: translateY(-5px);  /* Subtle hover effect to raise the item */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  /* Stronger shadow on hover */
+}
+
+/* Image Styling */
+.news-item img {
+    width: 100%;
+    height: auto;
+    max-height: 180px;  /* Increased max height for better image visibility */
+    border-radius: 8px;  /* Slightly more rounded corners */
+    object-fit: cover;  /* Ensures images fit inside their container without distortion */
+}
+
+/* News Title Styling */
+.news-item h3 {
+    font-size: 20px;
+    font-weight: 600;  /* Slightly bolder font */
+    margin: 15px 0;
+    color: #333;
+}
+
+/* News Description Styling */
+.news-item p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.6;  /* Improved readability */
+    margin-bottom: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .latest-news {
+        padding: 30px 15px;  /* Adjust padding for smaller screens */
+    }
+
+    .news-grid {
+        gap: 10px;  /* Reduce gap on smaller screens */
+    }
+
+    .news-item {
+        min-width: 240px;  /* Reduce item width on small screens */
+        padding: 15px;  /* Adjust padding for smaller screens */
+    }
+
+    .news-item img {
+        max-height: 140px;  /* Reduce image size on smaller screens */
+    }
+}
+
+</style>
+        <section id="highlights" class="player-highlights">
+            <h2 class="section-title">Player Highlight Videos</h2>
+            <div class="video-grid">
+                <div class="video-item">
+                   <iframe 
+    width="375" 
+    height="350" 
+    src="https://www.youtube.com/embed/PAbvaLyYzfA" 
+    title="YouTube video player" 
+    frameborder="10" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+                    <h3>6'5 250Lbe Jac Caglialone: Arizona Fall League Oct 13th,17th,18th and 19th</h3>
+                    <p>Big, Physical left-hand bat from the University of Florida, the #1 ranked prospect in the KC Royals Organization.</p>
+                </div>
+                <div class="video-item">
+                    <iframe 
+    width="360" 
+    height="315" 
+    src="https://www.youtube.com/embed/14pH1KnDltw" 
+    title="YouTube video player" 
+    frameborder="10" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+
+                    <h3>Current #1 Highschool Player in the 2025 Class</h3>
+                    <p> 6'4 Ethan Holliday, SS out of Stillwater HS in Oklahoma, has been turning heads throughout the 2024 season with high offensive potential and demonstrated the ability to hit for average which is believed to carry over to the next level. </p>
+                </div>
+                <div class="video-item">
+                     <iframe 
+    width="360" 
+    height="315" 
+    src="https://www.youtube.com/embed/H01_1stDtbY" 
+    title="YouTube video player" 
+    frameborder="10" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+<h3>Current #1, College arm in the 2025 Draft out of UC Santa Barbara</h3>
+                    <p>6'2 190Lb Tyler Bremner, had an impressive sophomore season finishing 10th in K's/9 Innings (13.01) bosting a 11-1 record with a 2.54 ERA. Certainly earned scouts attention and has everyone interested how he will announce him self in his Junior Year.</p>
+                </div>
+                
+                <div class="video-item">
+                     <iframe width="560" height="315" src="https://www.facebook.com/share/v/24P5LhcjFyYHS1xZ/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ <p> <h3>Arturo Disla: Current Texas Rangers A+ Farmhand and previous NAIA standout at Wayland Baptist University.</h3> </p>
+ <p> Is making a name for him self this winter, after hitting .274 in A ball he has been dominating the Australian Baseball League (ABL) slugging 6 homeruns and hitting .400, Will certainly be a name to watch come spring training 2025.</p>
+                </div>
+                
+            </div>
+        </section>
+
+<section id="trending" class="trending-players">
+    <h2 class="section-title">Rising Minor League Hitters</h2>
+    <div class="stock-grid">
+        
+        <!-- Colt Emerson Soft Box -->
+        <div class="stock-item">
+            <h3>Colt Emerson</h3>
+            <p>Trend: MLB Prospect #27: Seattle Mariners #1</p>
+            <p>One of the youngest players in the AFL this season, 370/.435/.537 with a league-best nine doubles in just 13 games.</p>
+            <img src="https://www.dropbox.com/scl/fi/soee94kujdo2nnph8aydd/ColtEmersonGradeReport2024.png?rlkey=k61td74ws6erorm60hixfj4s3&st=vvdt39kz&raw=1" 
+            alt="Colt Emerson Grade Report 2024" 
+            style="max-width: 100%; height: auto;">
+            <iframe src="https://streamable.com/m/colt-emerson-s-ninth-fall-league-double?partnerId=web_multimedia-search_video-share" width="360" height="315"></iframe>
+        </div>
+
+        <!-- Denzel Clarke Soft Box -->
+        <div class="stock-item">
+            <h3>Denzel Clarke</h3>
+            <p>Canadian has been added to the 40-man for the Oakland Athletics, one of the fastest rising prospects in the minors this fall based on his 2024 season performance where he hit BA:.269, OBP:.339,SLG:.446 and OPS:.784. Where things really turned a corner for his stock was this in his AFL season where he hit 382/.495/.566. A very impressive year for the young man, and certainly will be one to watch come Spring Training with an expected promotion to AAA sometime in 2025.</p>
+            <img src="https://www.dropbox.com/scl/fi/jolhhitbre0q7d017g6vs/DenzelClarke.png?rlkey=ail8nk7x0dyy65ufpwlmlvewi&st=cnt1g8jy&raw=1" alt="Scouting Grades Matrix" style="width:600px; max-width:100%; height:auto;">
+            <iframe src="https://streamable.com/m/denzel-clarke-s-three-run-homer-x4640?partnerId=web_video-playback-page_video-share" width="360" height="315"></iframe>
+        </div>
+
+        <!-- Josue Briceño Soft Box -->
+        <div class="stock-item">
+            <h3>Josue Briceño</h3>
+            <p>Detroit Tigers #9 prospect has certainly turned heads this AFL season winning the 2024 Joe Black MVP Award, one of the most dominant performances in the league's history. He is hitting (.433), slugging (.867), OPS (1.376), with 39 hits, 10 homers, 27 RBIs, 17 extra-base hits, and 78 total bases.</p>
+            <img id="image" src="https://www.dropbox.com/scl/fi/dcylr0h72gipq7wvlbvuj/Bricino2024Report1.png?rlkey=u255i9aja8d1ozi3euf3bwu25&st=irintqvg&dl=1" alt="Bricino 2024 Report" width="360" height="315">
+            <iframe id="video" src="https://streamable.com/m/josue-briceno-s-419-ft-home-run?partnerId=web_video-playback-page_video-share" width="360" height="315" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Drake Baldwin Soft Box -->
+        <div class="stock-item">
+            <h3>Drake Baldwin</h3>
+            <p>The #5 prospect in the Atlanta Braves farm system really made an impact this season both with the bat and his defense, offering a blend of athleticism and potential power at the plate. Baldwin’s 2024 season thus far has been characterized by solid performance across multiple levels. While splitting time between AAA and AA affiliates, Baldwin demonstrated an ability to handle advanced pitching, posting a .276 batting average with a .370 OBP and a .423 SLG, resulting in an OPS of .793. He showed his power potential with 16 home runs and a .276 batting average, though his Game Power and Raw Power remain works in progress, as his 30/40 hit tool and 30/50 game power indicate. Still, his 55/55 Raw Power suggests Baldwin could develop into a slugger with the ability to drive the ball for extra-base hits.</p>
+            <img id="image" src="https://www.dropbox.com/scl/fi/xigs60u2owg6u9t974lyv/Drake-Baldwin.png?rlkey=vkz1vgc5l2ahejnrscw778dt7&st=ot6vwrss&raw=1" alt="Baldwin 2024 Report" width="360" height="315">
+            <iframe src="https://streamable.com/milb/drake-baldwin-catches-two-runners-stealing" width="560" height="315"></iframe>
+        </div>
+
+    </div>
+</section>
+
+<!-- CSS for soft box styling -->
+<style>
+    .stock-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Spacing between soft boxes */
+        justify-content: space-between;
+    }
+
+    .stock-item {
+        width: 23%; /* Each soft box will take up 23% of the row */
+        padding: 15px;
+        border: 2px solid #dcdcdc; /* Light border */
+        border-radius: 10px; /* Rounded corners */
+        background-color: #f9f9f9; /* Light background */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        transition: all 0.3s ease;
+    }
+
+    .stock-item:hover {
+        transform: scale(1.05); /* Slight zoom on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slight increase in shadow on hover */
+    }
+
+    .stock-item h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .stock-item p {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .stock-item img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .stock-item iframe {
+        width: 100%;
+        height: 315px;
+        border: none;
+    }
+</style>
+
+
+
+    
+                </div>
+            </div>
+        </section>
+    </div>
+
+<section id="trending" class="trending-players">
+    <h2 class="section-title">Rising Minor League Pitchers</h2>
+    <div class="stock-grid">
+        <div class="stock-item">
+            <h3>Chad Patrick</h3>
+            <p>The 6'1 Righty had an impressive first season in AAA, a 14-1 record with 145 strikeouts and a 2.90 ERA...</p>
+            <iframe src="https://streamable.com/m/chad-patrick-s-seventh-strikeout-of-the-game?partnerId=web_video-playback-page_video-share" width="545" height="315"></iframe>
+
+            <!-- Collapsible More Info -->
+            <div class="more-info">
+                <p>Chad Patrick finished the season as the top pitcher in AAA, which earned him a 40-man spot on November 19th. He is now hunting for a big league job and has shown immense promise with his performance this season.</p>
+            </div>
+        </div>
+
+        <div class="stock-item">
+            <h3>Alex Pham</h3>
+            <p>5'11, 19th Round pick by the Baltimore Orioles in 2021...</p>
+            <iframe src="https://streamable.com/m/alex-pham-s-sixth-strikeout-of-the-game-x8038?partnerId=web_video-playback-page_video-share" width="545" height="315"></iframe>
+
+            <!-- Collapsible More Info -->
+            <div class="more-info">
+                <p>Alex Pham has made significant strides in his development, with a 7-4 record and 138 strikeouts. He has room to grow and will likely improve his velocity and spin rate as he continues to develop.</p>
+            </div>
+        </div>
+
+        <div class="stock-item">
+            <h3>Isaac Coffey</h3>
+            <p>The 10th-round pick in 2022, signed for $7,500...</p>
+            <iframe src="https://streamable.com/m/isaac-coffey-s-stellar-performance-on-the-mound?partnerId=web_video-playback-page_video-share" width="545" height="315"></iframe>
+
+            <!-- Collapsible More Info -->
+            <div class="more-info">
+                <p>Isaac Coffey went 11-4 this season with a 3.17 ERA in AA. His impressive fastball and deceptive arm slot make him a rising star in the Boston Red Sox organization.</p>
+            </div>
+        </div>
+
+        <div class="stock-item">
+            <h3>Andrew Painter</h3>
+            <iframe src="https://streamable.com/m/owen-caissie-s-four-hit-game?partnerId=web_video-playback-page_video-share" width="560" height="315"></iframe>
+
+            <!-- Collapsible More Info -->
+            <div class="more-info">
+                <p>Andrew Painter is known for his incredible velocity and command. As one of the top pitching prospects, his development will be key for the future of his team.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    #trending {
+        padding: 20px;
+        margin-left: 30%;
+        width: 80%;
+    }
+
+    .stock-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        justify-items: center;
+    }
+
+    .stock-item {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        cursor: pointer; /* Indicate that it's clickable */
+    }
+
+    .stock-item h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .stock-item p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    iframe {
+        margin-top: 10px;
+        width: 100%;
+        max-width: 545px;
+        height: auto;
+    }
+
+    /* Collapsible More Info */
+    .more-info {
+        display: none;
+        margin-top: 15px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    /* Styling for the expanded state */
+    .expanded .more-info {
+        display: block;
+    }
+
+</style>
+
+<script>
+    // JavaScript to toggle the collapsible content
+    document.querySelectorAll('.stock-item').forEach(item => {
+        item.addEventListener('click', function() {
+            // Toggle the "expanded" class to show or hide the "more-info" div
+            this.classList.toggle('expanded');
+        });
+    });
+</script>
+
+
+
+  
+</head>
+<body>
+    <div id="content">
+       
+    </div>
+
+    <script>
+        // Function to switch content every 10 seconds instantly
+        let currentContent = "image"; // Start with the image
+
+        setInterval(function() {
+            if (currentContent === "image") {
+                document.getElementById("image").classList.remove("active");
+                document.getElementById("video").classList.add("active");
+                currentContent = "video";
+            } else {
+                document.getElementById("video").classList.remove("active");
+                document.getElementById("image").classList.add("active");
+                currentContent = "image";
+            }
+        }, 10000); // 10 seconds for an instant switch
+    </script>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Diamond Insights. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
