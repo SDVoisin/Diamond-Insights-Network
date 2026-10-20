@@ -158,6 +158,21 @@ export function stat(label, value, sub) {
     sub ? h('div', { class: 'stat-sub' }, sub) : null);
 }
 
+// In-page confirmation. Native confirm() is blocked in sandboxed frames and
+// embedded viewers, so destructive actions ask through a <dialog> instead.
+export function confirmDialog(message, okLabel = 'Delete') {
+  return new Promise((resolve) => {
+    const dlg = h('dialog', { 'aria-label': 'Confirm' },
+      h('p', null, message),
+      h('div', { class: 'btn-row', style: { justifyContent: 'flex-end' } },
+        h('button', { class: 'btn', type: 'button', onclick: () => dlg.close('cancel') }, 'Cancel'),
+        h('button', { class: 'btn btn-primary', type: 'button', onclick: () => dlg.close('ok') }, okLabel)));
+    dlg.addEventListener('close', () => { resolve(dlg.returnValue === 'ok'); dlg.remove(); });
+    document.body.appendChild(dlg);
+    dlg.showModal();
+  });
+}
+
 export function empty(msg, action) {
   return h('div', { class: 'empty' }, h('p', null, msg), action || null);
 }

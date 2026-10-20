@@ -1,6 +1,6 @@
 // Import Trackman / bat-sensor CSVs, review sessions, delete or relabel them.
 
-import { h, card, table, toast, select } from '../util.js';
+import { h, card, table, toast, select, confirmDialog } from '../util.js';
 import { state, db, deleteSession } from '../store.js';
 import { ingest, playersFrom } from '../trackman.js';
 import { pageHeader, refresh, playerName, navigate } from '../app.js';
@@ -101,6 +101,6 @@ export default function importer(root, { rerender }) {
     { key: 'batters', label: 'Hitters', fmt: (v) => { const n = (v || []).map(playerName); return n.length > 3 ? `${n.slice(0, 3).join(', ')} +${n.length - 3}` : n.join(', '); } },
     { key: 'id', label: 'Video', num: true, fmt: (id) => String(state.videos.filter((x) => x.sessionId === id).length) },
     { key: 'fileName', label: 'File', fmt: (v) => h('span', { class: 'mono' }, v || '') },
-    { key: 'id', label: '', fmt: (id) => h('button', { class: 'btn btn-sm btn-ghost btn-danger', type: 'button', onclick: async () => { if (confirm('Delete this session, its pitches, targets and clip links?')) { await deleteSession(id); await refresh(); } } }, 'Delete') },
+    { key: 'id', label: '', fmt: (id) => h('button', { class: 'btn btn-sm btn-ghost btn-danger', type: 'button', onclick: async () => { if (await confirmDialog('Delete this session, its pitches, targets and clip links?')) { await deleteSession(id); await refresh(); } } }, 'Delete') },
   ], state.sessions)));
 }

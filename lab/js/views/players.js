@@ -1,6 +1,6 @@
 // Roster + player profile: bio, development goals, notes timeline, tagged reps.
 
-import { h, card, table, stat, empty, fmt, pct, isNum, toast, todayISO, select, addDays } from '../util.js';
+import { h, card, table, stat, empty, fmt, pct, isNum, toast, todayISO, select, addDays, confirmDialog } from '../util.js';
 import { state, db } from '../store.js';
 import { pageHeader, navigate, filters, refresh } from '../app.js';
 import { PITCH_METRICS, HIT_METRICS, hittingSummary, arsenal } from '../metrics.js';
@@ -149,7 +149,7 @@ function profile(root, id, rerender) {
 
   root.appendChild(h('div', { class: 'btn-row', style: { marginTop: '16px' } },
     h('button', { class: 'btn btn-ghost btn-danger', type: 'button', onclick: async () => {
-      if (!confirm(`Remove ${p.name} from the roster? Their Trackman rows stay; re-importing recreates the player.`)) return;
+      if (!(await confirmDialog(`Remove ${p.name} from the roster? Their Trackman rows stay; re-importing recreates the player.`, 'Remove'))) return;
       await db.del('players', id);
       await refresh();
       navigate('players');

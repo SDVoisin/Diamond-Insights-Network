@@ -1,7 +1,7 @@
 // Operations: camera kit + placement, capture-day checklist, file naming,
 // data backup/restore, and the model thresholds in use.
 
-import { h, card, table, toast, download, select, todayISO } from '../util.js';
+import { h, card, table, toast, download, select, todayISO, confirmDialog } from '../util.js';
 import { state, saveSetting, exportAll, importAll, wipeAll } from '../store.js';
 import { pageHeader, refresh } from '../app.js';
 import { DEFAULT_CAMERAS, ALERTS, HIT, ZONE, STUFF_MODEL } from '../config.js';
@@ -87,7 +87,7 @@ export default function ops(root, { rerender }) {
         h('button', { class: 'btn btn-primary', type: 'button', onclick: async () => download(`di-lab-backup-${todayISO()}.json`, JSON.stringify(await exportAll())) }, 'Export backup (JSON)'),
         h('button', { class: 'btn', type: 'button', onclick: () => restoreInput.click() }, 'Restore / merge backup'),
         h('button', { class: 'btn', type: 'button', onclick: () => download(`di-lab-pitches-${todayISO()}.csv`, toCSV(state.pitches), 'text/csv') }, 'Export all rows (CSV for R / Python)'),
-        h('button', { class: 'btn btn-ghost btn-danger', type: 'button', onclick: async () => { if (confirm('Erase ALL lab data in this browser? Export a backup first.')) { await wipeAll(); await refresh(); } } }, 'Erase all data'),
+        h('button', { class: 'btn btn-ghost btn-danger', type: 'button', onclick: async () => { if (await confirmDialog('Erase ALL lab data in this browser? Export a backup first.', 'Erase everything')) { await wipeAll(); await refresh(); } } }, 'Erase all data'),
         restoreInput)),
     card('Model settings in use',
       table([{ key: 'k', label: 'Setting' }, { key: 'v', label: 'Value' }], [

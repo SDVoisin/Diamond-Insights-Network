@@ -163,8 +163,13 @@ function pickFiles() {
   if (window.showOpenFilePicker) {
     return window.showOpenFilePicker({ multiple: true, types: [{ description: 'Video', accept: { 'video/*': ['.mp4', '.mov', '.m4v', '.mts', '.avi'] } }] })
       .then(async (handles) => Promise.all(handles.map(async (hd) => ({ file: await hd.getFile(), handle: hd }))))
-      .catch((e) => { if (e.name !== 'AbortError') throw e; return []; });
+      // Embedded/sandboxed pages refuse the picker (SecurityError): fall back to a file input.
+      .catch((e) => (e.name === 'AbortError' ? [] : pickWithInput()));
   }
+  return pickWithInput();
+}
+
+function pickWithInput() {
   return new Promise((resolve) => {
     const inp = h('input', { type: 'file', accept: 'video/*', multiple: true });
     inp.onchange = () => resolve([...inp.files].map((file) => ({ file, handle: null })));
