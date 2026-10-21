@@ -15,7 +15,7 @@ let tab = 'power';
 export default function hitting(root, { rerender }) {
   root.appendChild(pageHeader('Hitting Lab', 'Bat speed, swing path, timing and power development from Trackman + swing sensors.'));
   if (!state.pitches.some((p) => p.batterKey)) {
-    root.appendChild(empty('No hitting data yet. Import Trackman BP/live files or Blast exports.', h('a', { class: 'btn btn-primary', href: '#/import' }, 'Import data')));
+    root.appendChild(empty('No hitting data yet. Log BP, cage or live ABs in the Session Logger, or import Trackman / Blast files.', h('div', { class: 'btn-row', style: { justifyContent: 'center' } }, h('a', { class: 'btn btn-primary', href: '#/log' }, 'Start logging'), h('a', { class: 'btn', href: '#/import' }, 'Import data'))));
     return;
   }
   root.appendChild(filterBar('H', rerender));
@@ -122,9 +122,10 @@ function swingTab(root, ps) {
 
 function timingTab(root, ps) {
   const bip = bipOf(ps);
-  const tim = bip.map((p) => ({ p, t: timing(p) })).filter((x) => x.t);
+  const tim = ps.filter((p) => isNum(p.ev) || p.timingTag).map((p) => ({ p, t: timing(p) })).filter((x) => x.t);
   const s = hittingSummary(ps);
-  const basis = tim.some((x) => x.t.basis === 'depth') ? 'Trackman contact depth' : 'spray angle vs pitch location';
+  const BASIS = { depth: 'Trackman contact depth', coach: 'coach calls', spray: 'spray angle vs pitch location' };
+  const basis = [...new Set(tim.map((x) => x.t.basis))].map((k) => BASIS[k]).join(' + ') || '—';
   root.appendChild(h('div', { class: 'stats' },
     stat('On time', pct(s.onTime), `basis: ${basis}`),
     stat('Early', pct(s.early)),

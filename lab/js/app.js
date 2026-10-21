@@ -13,6 +13,8 @@ import hitting from './views/hitting.js';
 import video from './views/video.js';
 import importer from './views/importer.js';
 import ops from './views/ops.js';
+import logger from './views/logger.js';
+import mechanics from './views/mechanics.js';
 
 const ROUTES = [
   { path: 'dashboard', label: 'Dashboard', ico: '◧', view: dashboard, section: 'Overview' },
@@ -20,7 +22,9 @@ const ROUTES = [
   { path: 'pitching', label: 'Pitching Lab', ico: '◎', view: pitching, section: 'Development' },
   { path: 'hitting', label: 'Hitting Lab', ico: '⟋', view: hitting },
   { path: 'video', label: 'Video Room', ico: '▶', view: video },
-  { path: 'import', label: 'Import Data', ico: '⇪', view: importer, section: 'Operations' },
+  { path: 'mechanics', label: 'Mechanics Room', ico: '◐', view: mechanics },
+  { path: 'log', label: 'Session Logger', ico: '✎', view: logger, section: 'Operations' },
+  { path: 'import', label: 'Import Data', ico: '⇪', view: importer },
   { path: 'ops', label: 'Ops & Cameras', ico: '⚙', view: ops },
 ];
 

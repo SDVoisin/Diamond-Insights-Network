@@ -2,7 +2,7 @@
 // running the lab; Export/Import JSON moves data between machines and staff.
 
 const DB_NAME = 'di-player-dev-lab';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 export const STORES = {
   players: 'id',
@@ -12,6 +12,7 @@ export const STORES = {
   videos: 'id',       // clip registry (camera, sync offset, file handle)
   goals: 'id',        // development goals
   notes: 'id',        // coach notes per player/session
+  mechanics: 'id',    // video mechanics analyses: keyframes, angles, notes
   settings: 'key',
 };
 
@@ -70,15 +71,15 @@ export const db = {
 // tens of thousands of rows, which is comfortably in memory, and every view
 // filters the same arrays.
 export const state = {
-  players: [], sessions: [], pitches: [], targets: new Map(), videos: [], goals: [], notes: [],
+  players: [], sessions: [], pitches: [], targets: new Map(), videos: [], goals: [], notes: [], mechanics: [],
   settings: {},
   loaded: false,
 };
 
 export async function loadAll() {
-  const [players, sessions, pitches, targets, videos, goals, notes, settings] = await Promise.all(
-    ['players', 'sessions', 'pitches', 'targets', 'videos', 'goals', 'notes', 'settings'].map((s) => db.all(s)));
-  Object.assign(state, { players, sessions, pitches, videos, goals, notes });
+  const [players, sessions, pitches, targets, videos, goals, notes, settings, mechanics] = await Promise.all(
+    ['players', 'sessions', 'pitches', 'targets', 'videos', 'goals', 'notes', 'settings', 'mechanics'].map((s) => db.all(s)));
+  Object.assign(state, { players, sessions, pitches, videos, goals, notes, mechanics });
   state.targets = new Map(targets.map((t) => [t.uid, t]));
   state.settings = Object.fromEntries(settings.map((s) => [s.key, s.value]));
   state.sessions.sort((a, b) => (b.date || '').localeCompare(a.date || ''));

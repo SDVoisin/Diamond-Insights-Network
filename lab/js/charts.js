@@ -207,9 +207,13 @@ export function trendPlot(el, series, opts = {}) {
     shapes.push({ type: 'line', xref: 'paper', x0: 0, x1: 1, y0: g.value, y1: g.value, line: { color: css('--accent'), width: 1.5, dash: 'dash' } });
     annotations.push({ xref: 'paper', x: 1, y: g.value, xanchor: 'right', yanchor: 'bottom', text: g.label, showarrow: false, font: { color: css('--text-secondary'), size: 11 } });
   }
+  // A single session would otherwise get a millisecond-wide date axis.
+  const dates = [...new Set(series.flatMap((s) => s.pts.map((d) => d.date)))].sort();
+  const pad = (iso, n) => { const d = new Date(iso + 'T00:00:00'); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+  const xrange = dates.length === 1 ? [pad(dates[0], -7), pad(dates[0], 7)] : undefined;
   plot(el, traces, {
     shapes, annotations,
-    xaxis: { type: 'date', title: { text: '' } },
+    xaxis: { type: 'date', title: { text: '' }, range: xrange },
     yaxis: { title: { text: opts.ytitle || '' } },
     hovermode: 'x unified',
     showlegend: series.length > 1,

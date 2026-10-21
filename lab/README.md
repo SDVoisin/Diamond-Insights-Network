@@ -15,7 +15,8 @@ lab/
   js/metrics.js         all analytics (pure functions)
   js/config.js          tunable thresholds, DI Stuff weights, camera kit
   js/charts.js          Plotly chart builders
-  js/views/*.js         Dashboard, Players, Pitching Lab, Hitting Lab, Video Room, Import, Ops
+  js/pads.js            tap pads (strike zone, spray field) for hand logging
+  js/views/*.js         Dashboard, Players, Pitching Lab, Hitting Lab, Video Room, Mechanics Room, Session Logger, Import, Ops
   vendor/               Plotly 2.35.2 (bundled so the lab works with no internet at the field)
   sample/               10 weeks of demo data (regenerate: python3 tools/make_sample_data.py)
 tools/
@@ -34,6 +35,15 @@ tools/
 
 Data is stored in the browser (IndexedDB) on the machine you use — nothing is uploaded anywhere.
 That keeps player data private and lets the lab run at the field without Wi-Fi.
+
+## Without Trackman exports
+
+The lab works with no Trackman CSVs at all:
+
+* **Session Logger** (`#/log`, built for an iPad). Staff pick the pitcher/hitter, tap the pitch type, tap the catcher's target and where the pitch crossed, and type velo from a Pocket Radar or the Trackman iPad screen (spin, IVB, HB optional). For hitters: result, exit velo / launch angle if available, a tap on the spray field and a coach's timing call (early / on time / late). Every rep is timestamped on save, so it lines up with the session's video in the Video Room automatically. Logged reps feed the Pitching Lab, Hitting Lab, dashboard and goals exactly like imported ones.
+* **Mechanics Room** (`#/mechanics`). Open any clip (Mevo, camcorder, phone) or one already attached in the Video Room. Side-by-side A/B comparison, 0.1×–1× playback, frame stepping (← → keys), line and angle drawing, keyframe marks (leg lift, foot strike, max external rotation, release / load, plant, launch, contact) with real-time spans corrected for slow-motion files, named measurements, frame export, and saved analyses that trend per player.
+
+When CSVs do become available (ask Trackman support what your Portable license allows for exporting session data from the web portal or app), import them and the same pages fill in with the full Trackman metric set.
 
 ## What it does
 

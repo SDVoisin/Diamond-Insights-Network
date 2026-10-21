@@ -8,7 +8,7 @@ import { pageHeader, playerName, navigate } from '../app.js';
 import { DEFAULT_CAMERAS } from '../config.js';
 import { PITCH_TYPES, fmtClock } from '../trackman.js';
 
-const urls = new Map();       // videoId -> object URL (this browser session only)
+export const urls = new Map(); // videoId -> object URL (this browser session only)
 let selectedUid = null;
 let preRoll = 2.5;
 let rate = 1;

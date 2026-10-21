@@ -118,6 +118,7 @@ export function toast(msg, kind = 'info') {
   }
   const t = h('div', { class: `toast toast-${kind}` }, msg);
   host.appendChild(t);
+  while (host.children.length > 3) host.firstChild.remove();
   setTimeout(() => t.remove(), 4500);
 }
 

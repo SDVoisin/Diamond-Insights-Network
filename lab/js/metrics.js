@@ -251,7 +251,8 @@ export const insideness = (p) => (isNum(p.plateX) ? (p.bats === 'L' ? p.plateX :
 
 // Timing classification for a ball in play.
 // 1) Trackman contact depth (ContactPositionX, ft in front of the plate) when present.
-// 2) Otherwise spray angle relative to what pitch location predicts
+// 2) A coach's call logged in the Session Logger (Early / On time / Late).
+// 3) Otherwise spray angle relative to what pitch location predicts
 //    (inside pitches are expected to be pulled): residual > +15 deg early, < -15 late.
 export function timing(p) {
   if (isNum(p.contactX)) {
@@ -259,6 +260,7 @@ export function timing(p) {
     const d = p.contactX - ideal;
     return { label: d > 0.75 ? 'Early' : d < -0.75 ? 'Late' : 'On time', residual: d, basis: 'depth' };
   }
+  if (p.timingTag) return { label: p.timingTag, residual: NaN, basis: 'coach' };
   const pa = pullAngle(p);
   if (!isNum(pa)) return null;
   const expected = 5 + 15 * (isNum(insideness(p)) ? insideness(p) : 0);
@@ -275,7 +277,7 @@ export function hittingSummary(ps) {
   const live = ps.filter((p) => p.call && (p.sessionType === 'live' || p.sessionType === 'game'));
   const zone = live.filter(inZone), chaseD = live.filter((p) => isNum(p.plateX) && !inZone(p));
   const sq = vals(ps, squaredUp);
-  const tim = bip.map(timing).filter(Boolean);
+  const tim = ps.filter((p) => isNum(p.ev) || p.timingTag).map(timing).filter(Boolean);
   return {
     swings: ps.filter((p) => isNum(p.batSpeed) || isSwing(p.call) || isNum(p.ev)).length,
     bip: bip.length,
@@ -372,5 +374,5 @@ export const HIT_METRICS = {
   attackAngle: { label: 'Attack angle', unit: '°', d: 1, dir: 1, fn: (ps) => avgOf(ps, 'attackAngle') },
   rotAcc: { label: 'Rotational accel.', unit: 'g', d: 1, dir: 1, fn: (ps) => avgOf(ps, 'rotAcc') },
   ttc: { label: 'Time to contact', unit: 's', d: 3, dir: -1, fn: (ps) => avgOf(ps, 'ttc') },
-  onTime: { label: 'On-time %', unit: '%', d: 0, dir: 1, scale: 100, fn: (ps) => { const t = ps.filter((p) => isNum(p.ev)).map(timing).filter(Boolean); return t.length ? t.filter((x) => x.label === 'On time').length / t.length : NaN; } },
+  onTime: { label: 'On-time %', unit: '%', d: 0, dir: 1, scale: 100, fn: (ps) => { const t = ps.filter((p) => isNum(p.ev) || p.timingTag).map(timing).filter(Boolean); return t.length ? t.filter((x) => x.label === 'On time').length / t.length : NaN; } },
 };

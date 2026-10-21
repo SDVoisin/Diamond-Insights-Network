@@ -12,9 +12,11 @@ import { loadDemo } from './importer.js';
 export default function dashboard(root, { rerender }) {
   root.appendChild(pageHeader('Dashboard', 'Organisation-wide view of player development, workload and progress.'));
   if (!state.pitches.length) {
-    root.appendChild(empty('Welcome to the Player Development Lab. Import your Trackman exports to begin, or load the demo dataset to explore.',
+    root.appendChild(empty('Welcome to the Player Development Lab. Log a session live from the iPad, open a video in the Mechanics Room, import Trackman or Blast files, or load the demo dataset to explore.',
       h('div', { class: 'btn-row', style: { justifyContent: 'center' } },
-        h('a', { class: 'btn btn-primary', href: '#/import' }, 'Import data'),
+        h('a', { class: 'btn btn-primary', href: '#/log' }, 'Start logging a session'),
+        h('a', { class: 'btn', href: '#/mechanics' }, 'Review video'),
+        h('a', { class: 'btn', href: '#/import' }, 'Import data'),
         h('button', { class: 'btn', type: 'button', onclick: async (e) => { e.target.disabled = true; e.target.textContent = 'Loading…'; try { const n = await loadDemo(); toast(`Demo data loaded: ${n} rows`, 'ok'); } catch (err) { toast('Demo load failed: ' + err.message, 'error'); } } }, 'Load demo data'))));
     return;
   }

@@ -7,6 +7,7 @@ import { filters, filterBar, filtered, pageHeader, playerName, navigate } from '
 import { arsenal, axisToClock, commandSummary, devCurve, PITCH_METRICS, missInches, shapeGap, veloFade, inZone } from '../metrics.js';
 import { PITCH_TYPES, PITCH_ORDER, ZONE_TARGETS, fmtClock, pitchClass } from '../trackman.js';
 import * as C from '../charts.js';
+import { zonePad } from '../pads.js';
 
 let tab = 'arsenal';
 
@@ -15,7 +16,7 @@ const typeCell = (t) => h('span', { class: 'type-dot' }, h('i', { style: { backg
 export default function pitching(root, { rerender }) {
   root.appendChild(pageHeader('Pitching Lab', 'Pitch design, command development and velocity tracking from Trackman.'));
   if (!state.pitches.some((p) => p.pitcherKey)) {
-    root.appendChild(empty('No pitching data yet. Import Trackman CSVs to get started.', h('a', { class: 'btn btn-primary', href: '#/import' }, 'Import data')));
+    root.appendChild(empty('No pitching data yet. Log a bullpen in the Session Logger, or import Trackman CSVs.', h('div', { class: 'btn-row', style: { justifyContent: 'center' } }, h('a', { class: 'btn btn-primary', href: '#/log' }, 'Start logging'), h('a', { class: 'btn', href: '#/import' }, 'Import data'))));
     return;
   }
   root.appendChild(filterBar('P', rerender));
@@ -230,32 +231,15 @@ function commandTab(root, ps, player, rerender) {
     ], seq, { compact: true, onRowClick: (p) => { cmdSelected = p.uid; rerender(); }, rowClass: (p) => (p.uid === cmdSelected ? 'selected' : null) })))));
 }
 
-// Clickable strike-zone pad (catcher's view) in SVG.
+// Strike-zone pad showing the selected pitch and its target.
 function targetPad(sel, onPick) {
-  const NS = 'http://www.w3.org/2000/svg';
-  const W = 3, H = 3.6, x0 = -1.5, z0 = 0.6; // ft window
-  const svg = document.createElementNS(NS, 'svg');
-  svg.setAttribute('viewBox', `0 0 ${W * 100} ${H * 100}`);
-  const toSvg = (x, z) => [(x - x0) * 100, (H - (z - z0)) * 100];
-  const add = (tag, attrs) => { const el = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v); svg.appendChild(el); return el; };
-  const [zx1, zy1] = toSvg(-0.83, 3.5), [zx2, zy2] = toSvg(0.83, 1.5);
-  add('rect', { x: zx1, y: zy1, width: zx2 - zx1, height: zy2 - zy1, fill: 'none', stroke: 'var(--text-secondary)', 'stroke-width': 3 });
-  for (let i = 1; i < 3; i++) {
-    add('line', { x1: zx1 + ((zx2 - zx1) * i) / 3, x2: zx1 + ((zx2 - zx1) * i) / 3, y1: zy1, y2: zy2, stroke: 'var(--grid)', 'stroke-width': 1.5 });
-    add('line', { x1: zx1, x2: zx2, y1: zy1 + ((zy2 - zy1) * i) / 3, y2: zy1 + ((zy2 - zy1) * i) / 3, stroke: 'var(--grid)', 'stroke-width': 1.5 });
-  }
+  const marks = [];
   if (sel) {
     const t = state.targets.get(sel.uid);
-    if (t) { const [tx, ty] = toSvg(t.x, t.z); add('circle', { cx: tx, cy: ty, r: 14, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 3 }); }
-    if (isNum(sel.plateX)) { const [px, py] = toSvg(sel.plateX, sel.plateZ); add('circle', { cx: px, cy: py, r: 9, fill: C.pitchColor(sel.pitchType), stroke: 'var(--surface-1)', 'stroke-width': 2 }); }
+    if (t) marks.push({ x: t.x, z: t.z, kind: 'target' });
+    marks.push({ x: sel.plateX, z: sel.plateZ, kind: 'pitch', color: C.pitchColor(sel.pitchType) });
   }
-  svg.addEventListener('click', (e) => {
-    const r = svg.getBoundingClientRect();
-    const x = x0 + ((e.clientX - r.left) / r.width) * W;
-    const z = z0 + H - ((e.clientY - r.top) / r.height) * H;
-    onPick(Math.round(x * 100) / 100, Math.round(z * 100) / 100);
-  });
-  return h('div', { class: 'pad', role: 'img', 'aria-label': 'Strike zone target pad, catcher view' }, svg);
+  return zonePad(marks, onPick, 'Strike zone target pad, catcher view');
 }
 
 // ---------------- Development curves ----------------
